@@ -1,0 +1,31 @@
+.side-bar{
+    /* position: absolute; */
+    background-color: #fff;
+    border: 1px solid black;
+    border-left: 0;
+    width: 20%;
+    height: 94vh;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+.user-profile{
+    width: 80%;
+    height: 20%;
+    margin: 20% auto;
+    align-items: center;
+    justify-content: center;
+    padding: 8% 20%;
+    text-align: center;
+}
+.user-profile img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    cursor: pointer;
+}
+.remove{
+    display: none;
+}
