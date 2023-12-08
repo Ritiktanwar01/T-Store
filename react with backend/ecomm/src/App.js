@@ -14,29 +14,41 @@ import axios from 'axios';
 
 function App() {
   const [userdata, setuserdata]= useState([])
-  const [username, setusername]= useState("user_0")
+  const [username, setusername]= useState("Net_err")
   const [userimage, setuserimage]= useState("media/userProfiles/default.png")
   const [open, setopen] = useState(false)
-  useEffect(()=>{
-    async function getuserdata(){
+  // useEffect(()=>{
+  //   async function getuserdata(){
+  //     const url = "http://127.0.0.1:8000/apidata/sidebardata/"
+  //   const data ={
+  //     "token":window.sessionStorage.getItem("data")
+  //   }
+  //   try{
+  //         await axios.post(url,data).then((response) =>setuserdata(response.data))
+  //         console.log(userdata)
+  //         setuserimage(userdata.payload[0].user_image)
+  //         setusername(userdata.payload[0].user_name)
+  //   }catch (error){
+  //       console.log(error)
+  //   }
+  // }
+  // getuserdata();
+  // console.log("working")
+  // },[])
+  const handleclick = async ()=>{
       const url = "http://127.0.0.1:8000/apidata/sidebardata/"
     const data ={
       "token":window.sessionStorage.getItem("data")
     }
-    try{
-          await axios.post(url,data).then((response) => setuserdata(response.data))
-          // setuserdata(user.data)
-          // setuserdata(user.data)
+   try{
+        await  axios.post(url,data).then((response) =>setuserdata(response.data))
+          // console.log(userdata)
           setuserimage(userdata.payload[0].user_image)
           setusername(userdata.payload[0].user_name)
+          setopen(!open);
     }catch (error){
         console.log(error)
     }
-  }
-  getuserdata();
-  },[])
-  const handleclick =()=>{
-    setopen(!open);
   }
   return (
     <BrowserRouter>
