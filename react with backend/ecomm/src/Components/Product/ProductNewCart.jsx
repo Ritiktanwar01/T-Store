@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ProductStyleNew from '../Product/ProductStyleNew.css'
+import axios from 'axios'
 
 function ProductNewCart(props) {
+  const removeitem = async ()=>{
+    const url = "http://127.0.0.1:8000/apidata/removeitem/"
+    const data = {
+      'token':sessionStorage.getItem("data"),
+      'itemid': props.itemid
+    }
+    try{
+          await axios.post(url,data)
+          window.location.reload()
+        }
+    catch(err){
+      console.log(err)
+    }
+  }
   return (
     <>
     <div className="card mb-3" style={{maxWidth: '100%',margin:'auto'}}>
@@ -18,7 +33,8 @@ function ProductNewCart(props) {
     </div>
     <div className="col-md-4 d-flex">
       <div className="col-md-6">
-      <button type="button" className="btn btn-danger btn-lg">Remove</button>
+        <input type="hidden"/>
+      <button type="button" className="btn btn-danger btn-lg" onClick={removeitem}>Remove</button>
       </div>
       <div className="col-md-6">
       <button type="button" className="btn btn-primary btn-lg">Buy Now</button>

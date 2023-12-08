@@ -7,9 +7,10 @@ function SignUp() {
   const [email, setemail] = useState()
   const [confirmpassword, setconfirmpassword] = useState()
   const [mobile, setmobile] = useState()
+  const [username, setusername] = useState()
   const sendata = () => {
   const url = 'http://127.0.0.1:8000/apidata/signup/'
-  const data = {"email":email,"password":confirmpassword,"mobile":mobile}
+  const data = {"email":email,"password":confirmpassword,"mobile":mobile,"username":username}
   axios.post(url,data).then((response)=>{
     console.log(response)
   })
@@ -17,8 +18,12 @@ function SignUp() {
   const navigate = useNavigate()
   const [password, setpassword] = useState()
   const Validationpasswd = ()=>{
-    if (confirmpassword == password){
+    if (confirmpassword === password){
       sendata();
+      setemail("")
+      setmobile("")
+      setpassword("")
+      setconfirmpassword("")
       alert('User Created');
       navigate('/login');
     }else{
@@ -26,7 +31,13 @@ function SignUp() {
     }
   }
   return (
-    <div className='container' style={{ width: '35%', margin: '90px auto', border: '1px solid green', borderRadius: 4, height: '64%', padding: '4% 0', paddingLeft: '4%', paddingRight: 0 }}>
+    <div className='container' style={{ width: '35%', margin: '90px auto', border: '1px solid green', borderRadius: 4, height: '68%', padding: '4% 0', paddingLeft: '4%', paddingRight: 0 }}>
+      <div className="mb-3 col">
+        <label className="col-sm-2 col-form-label">Username</label>
+        <div className="col-sm-10">
+          <input type="text" className="form-control" id="inputUser" onChange={e => setusername(e.target.value)}  required/>
+        </div>
+      </div>
       <div className="mb-3 col">
         <label className="col-sm-2 col-form-label">Email</label>
         <div className="col-sm-10">

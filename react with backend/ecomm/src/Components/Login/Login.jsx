@@ -14,8 +14,10 @@ function Login() {
     axios.post(url,data).then((response)=>{
       if (response.data.payload == "Login Success"){
         navigate('/')
-        window.sessionStorage.clear()
-        window.sessionStorage.setItem("data",response.data.authkey)
+        sessionStorage.clear()
+        sessionStorage.setItem("data",response.data.authkey)
+        setemail("")
+        setpassword("")
       }else{
         alert("Login Faild")
       }

@@ -13,7 +13,7 @@ function ProductList() {
         const user = await axios.get(url)
         // setuserdata(user.data)
         setuserdata(user.data)
-        console.log(user)
+        // console.log(user)
       }catch (error){
           console.log(error)
       }

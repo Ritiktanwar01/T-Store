@@ -14,9 +14,7 @@ function CartList() {
       }
       try{
         const user = await axios.post(url,data)
-        // setuserdata(user.data)
         setuserdata(user.data)
-        console.log(user)
       }catch (error){
           console.log(error)
       }

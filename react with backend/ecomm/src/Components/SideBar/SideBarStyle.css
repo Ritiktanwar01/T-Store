@@ -29,3 +29,15 @@
 .remove{
     display: none;
 }
+.user-settings ul{
+    display: block;
+    width: 180px;
+}
+.user-settings ul li{
+    list-style: none;
+    text-align: center;
+    padding: 8px;
+}
+.user-settings ul li a{
+    text-decoration: none;
+}

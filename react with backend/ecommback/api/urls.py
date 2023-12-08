@@ -6,5 +6,8 @@ urlpatterns =[
     path('login/', Login),
     path('tokenvalidate/', tokenvaliadtion),
     path('addcart/', addcartdata),
-    path('getcartuser/', getusercartitem)
+    path('getcartuser/', getusercartitem),
+    path('changepassword/',changepassword),
+    path('sidebardata/',sidebardata),
+    path('removeitem/',deletecartitem)
 ]

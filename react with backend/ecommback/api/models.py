@@ -13,6 +13,7 @@ class product(models.Model):
 
 class user(models.Model):
    user_name = models.CharField(max_length=200)
+   user_image = models.ImageField(upload_to='media/userProfiles',default='media/userProfiles/default.png')
    email = models.CharField(max_length=120)
    mobile = models.CharField(max_length=12)
    password = models.CharField(max_length=180)

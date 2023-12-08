@@ -1,27 +1,44 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { CiLogout } from "react-icons/ci";
 import SideBarStyle from '../SideBar/SideBarStyle.css'
-
-function SideBar({open}) {
+import { MdSecurity } from "react-icons/md";
+function SideBar (props) {
+    const navigate = useNavigate()
+    const logoutFun = ()=>{
+        sessionStorage.clear()
+        navigate('/')
+        props.click()
+    }
+  const gosecurity = ()=>{
+    navigate('security')
+    props.click()
+  }
   return (
-    <div className={open?"side-bar":"remove"} id='sidebarmain'>
+    <div className={props.open?"side-bar":"remove"}>
         <div className="user-profile">
-            <img src="https://th.bing.com/th?id=ORMS.ce7fc64b080b5083fec471d10093e8a9&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0" alt="user" />
-            <p>Ritik</p>
+            <img src={"http://127.0.0.1:8000/media/" + props.img} alt="user" />
+            <p>{props.username}</p>
         </div>
         <div className="user-settings">
             <ul>
                 <li>
-                    <Link>Profile Image</Link>
+                    <Link>Purchase History</Link>
                 </li>
                 <li>
-                    <Link>Security</Link>
+                    <Link>Profile Settings</Link>
                 </li>
                 <li>
                     <Link>My Products</Link>
                 </li>
                 <li>
-                    <Link>Purchase History</Link>
+                <span onClick={gosecurity}>
+                    <MdSecurity /> <span style={{cursor:'pointer'}}>Security</span>
+                </span>
+                </li>
+                <li>
+                <span onClick={logoutFun}>
+                    <CiLogout /><span style={{cursor:'pointer'}}>Logout</span>
+                </span>
                 </li>
             </ul>
         </div>
